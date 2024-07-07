@@ -1,0 +1,41 @@
+Exercise 1:
+Write a simple Java >= 7 program that returns the smallest non occurring integer in a given 
+Array. 
+E.g Given an Array1 = [1,3,6,4,1,2] returns 5, and Array2 = [5, -1, -3] returns 1
+
+Solution:
+public class SmallestNonOccurringInteger {
+
+    public static int findSmallestNonOccurring(int[] arr) {
+        int n = arr.length;
+
+        int[] freq = new int[n + 1];
+
+        for (int num : arr) {
+            if (num >= 0 && num < n) {
+                freq[num]++;
+            }
+        }
+
+        for (int i = 0; i < n + 1; i++) {
+            if (freq[i] == 1) {
+                return i;
+            }
+        }
+        return 1;
+    }
+
+
+
+
+Exercise 2:
+Given two tables (T1 and T2) below, write a Structured Query Language (MySql | Postgres | 
+Oracle) that when executed returns the ordered records in T1 but NOT in T2, as Output. 
+
+Solution Query:
+
+SELECT T1.id, T1.name, T1.age
+FROM T1
+LEFT JOIN T2 ON T1.id = T2.id AND T1.name = T2.name AND T1.age = T2.age
+WHERE T2.id IS NULL
+ORDER BY T1.id;
